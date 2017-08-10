@@ -11,8 +11,11 @@ var user = os.userInfo();
 // console.log(user);
 //console.log(`You are ${notes.age} yrs old.`);
 
-fs.appendFile('greetings.txt', `Hello ${user.username}, you are ${notes.age}.`, function(err) {
-  if(err) {
-    console.log('Unable to write to file');
-  }
-});
+// fs.appendFile('greetings.txt', `Hello ${user.username}, you are ${notes.age}.`, function(err) {
+//   if(err) {
+//     console.log('Unable to write to file');
+//   }
+// });
+
+var res = notes.addNote();
+console.log(res);
