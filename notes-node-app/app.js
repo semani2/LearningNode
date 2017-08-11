@@ -13,8 +13,11 @@ var command = process.argv[2];
 
 if(command === 'add') {
   var note = notes.addNote(argv.title, argv.body);
-  if(!_.isUndefined(note)) {
-    console.log(`Note ${note.title} added. Note reads: ${note.body}`)
+  if(!_.isUndefined(note)) { // Can also check if(note)
+    console.log('Note created');
+    console.log('--------------------');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
   }
   else {
     console.log('There was an error adding the note ' + argv.title);
