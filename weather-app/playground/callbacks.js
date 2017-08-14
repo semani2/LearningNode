@@ -4,7 +4,10 @@ var getUser = (id, callback) => {
     name: "Sai",
     age: 25
   };
-  callback(user);
+  //Simulated delay
+  setTimeout(() => {
+    callback(user);
+  }, 2000);
 };
 
 getUser(5, (user) => {
