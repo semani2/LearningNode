@@ -13,11 +13,21 @@ const argv = yargs
 .alias('help', 'h')
 .argv;
 
+//console.log(argv);
+var address = encodeURIComponent(argv.a);
 request({
-  url: 'https://maps.googleapis.com/maps/api/geocode/json?address=4944%20Summit%20arbor%20drive%20raleigh',
+  url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
   json: true
 }, (error, response, body) => {
-  console.log(`Address: ${body.results[0].formatted_address}`);
-  console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
-  console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+  if(error) {
+    console.log('Unable to connect to Google Servers');
+  }
+  else if(body.status === 'ZERO_RESULTS') {
+    console.log('Unable to find entered address');
+  }
+  else if(body.status === 'OK') {
+    console.log(`Address: ${body.results[0].formatted_address}`);
+    console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
+    console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+  }
 });
