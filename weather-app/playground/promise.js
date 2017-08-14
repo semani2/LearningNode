@@ -11,10 +11,13 @@ var asyncAdd = (a, b) => {
   });
 };
 
+// Promise chaining with a single error handler for all the promises in the chain.
 asyncAdd(10,2).then((result) => {
     console.log(`Result: ${result}`);
-  },
-  (errorMessage) => {
+    return asyncAdd(result, '33');
+  }).then((result) => {
+    console.log(`Result: ${result}`);
+  }).catch((errorMessage) => {
     console.log(errorMessage);
   });
 // var somePromise = new Promise((resolve, reject) => {
