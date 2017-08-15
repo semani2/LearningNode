@@ -24,3 +24,15 @@ it('should expect some value', () => {
       age: 25
   });
 });
+
+it('shoud verify first and last name are set', () => {
+  var user = {
+    age: 25,
+    location: "Raleigh"
+  };
+  user = utils.setName(user, 'Sai Emani');
+  expect(user).toInclude({
+    firstName: 'Sai',
+    lastName: 'Emani'
+  }).toBeA('object');
+});
