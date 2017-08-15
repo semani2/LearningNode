@@ -2,15 +2,34 @@ const utils = require('./utils');
 
 const expect = require('expect');
 
-it('should add two numbers', () => {
-  var result = utils.add(11,33);
+describe('Utils', () => {
+  describe('#add', () => {
+    it('should add two numbers', () => {
+      var result = utils.add(11,33);
+    
+      expect(result).toBe(44).toBeA('number');
+    });
+  
+      // Testing async functions with passing the done parameter
+  it('should async add two numbers', (done) => {
+    utils.asyncAdd(4, 3, (result) => {
+      expect(result).toBe(7).toBeA('number');
+      done();
+    })
+  });
+  });
+  
+  it('should square the number', () => {
+    var result = utils.square(-5);
+    expect(result).toBe(25).toBeA('number');
+  });
 
-  expect(result).toBe(44).toBeA('number');
+it('should async square a number', (done) => {
+  utils.asyncSquare(5, (result) => {
+    expect(result).toBeA('number').toBe(25);
+    done();
+  });
 });
-
-it('should square the number', () => {
-  var result = utils.square(-5);
-  expect(result).toBe(25).toBeA('number');
 });
 
 it('should expect some value', () => {
@@ -37,17 +56,4 @@ it('shoud verify first and last name are set', () => {
   }).toBeA('object');
 });
 
-// Testing async functions with passing the done parameter
-it('should async add two numbers', (done) => {
-  utils.asyncAdd(4, 3, (result) => {
-    expect(result).toBe(7).toBeA('number');
-    done();
-  })
-});
 
-it('should async square a number', (done) => {
-  utils.asyncSquare(5, (result) => {
-    expect(result).toBeA('number').toBe(25);
-    done();
-  });
-});

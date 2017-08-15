@@ -20,7 +20,7 @@ app.get('/users', (req, res) => {
         name: 'Srikar',
         age: 15
     }];
-    res.status(200).send(users)
+    res.status(200).send(users);
 });
 
 app.listen(3000, () => {
