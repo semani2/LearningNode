@@ -3,6 +3,7 @@
 // Setting up the express app
  var app = express();
  //Setting up handle bars
+ hbs.registerPartials(__dirname + '/views/partials');
  app.set('view engine', 'hbs');
 
 //Setting up a static web page
@@ -10,13 +11,11 @@
 
  app.get('/', (req, res) => {
   //  res.send('<h1>Hello Express!!</h1>');
-  res.send({
-    name: 'Sai Prajnan',
-    likes: [
-      'Music',
-      'Coding'
-    ]
-  });
+  res.render('home.hbs', {
+    pageTitle: 'Home Page',
+    currentYear: new Date().getFullYear(),
+    welcomeMessage: 'Welcome to Express JS, rendering tutorial.'
+  })
  });
 
  app.get('/about', (req, res) => {
