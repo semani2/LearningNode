@@ -1,6 +1,9 @@
  const express = require('express');
+ const hbs = require('hbs');
 // Setting up the express app
  var app = express();
+ //Setting up handle bars
+ app.set('view engine', 'hbs');
 
 //Setting up a static web page
  app.use(express.static(__dirname + '/public'));
@@ -17,7 +20,7 @@
  });
 
  app.get('/about', (req, res) => {
-   res.send('About page');
+   res.render('about.hbs');
  });
 
  app.get('/bad', (req, res) => {
