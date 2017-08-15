@@ -9,11 +9,15 @@
 //Setting up a static web page
  app.use(express.static(__dirname + '/public'));
 
+hbs.registerHelper('getCurrentYear', () => {
+  return new Date().getFullYear();
+});
+
+
  app.get('/', (req, res) => {
   //  res.send('<h1>Hello Express!!</h1>');
   res.render('home.hbs', {
     pageTitle: 'Home Page',
-    currentYear: new Date().getFullYear(),
     welcomeMessage: 'Welcome to Express JS, rendering tutorial.'
   })
  });
@@ -21,7 +25,6 @@
  app.get('/about', (req, res) => {
    res.render('about.hbs', {
      pageTitle: 'About Page',
-     currentYear: new Date().getFullYear()
    });
  });
 
