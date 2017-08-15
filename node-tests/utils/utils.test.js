@@ -36,3 +36,11 @@ it('shoud verify first and last name are set', () => {
     lastName: 'Emani'
   }).toBeA('object');
 });
+
+// Testing async functions with passing the done parameter
+it('should async add two numbers', (done) => {
+  utils.asyncAdd(4, 3, (result) => {
+    expect(result).toBe(7).toBeA('number');
+    done();
+  })
+});
