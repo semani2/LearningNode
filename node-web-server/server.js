@@ -22,9 +22,9 @@
  });
 
 // maintenance middle ware
- app.use((req, res, next) => {
-   res.render('maintenance.hbs');
- });
+ // app.use((req, res, next) => {
+ //   res.render('maintenance.hbs');
+ // });
 
  //Setting up a static web page - using middleware
   app.use(express.static(__dirname + '/public'));
